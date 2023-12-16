@@ -5,20 +5,26 @@ import matplotlib.pyplot as plt
 #commit
 # Set parameters
 num_points = 23
-pop_size = 50
-num_generations = 10000  
+pop_size = 1
+num_generations = 1 
 mutation_rate = 0.1
 crossover_rate = 0.1
 selection_pressure = 0.2
 min_symmetry = 3
 
 # Fitness function to minimize
+# def fitness_function(positions):
+#     dist_matrix = distance.pdist(positions)
+#     dist_sum = np.sum(dist_matrix)
+#     even_distribution_score = 1 / (1 + dist_sum)
+#     repulsion_score = np.sum(1 / (1 + dist_matrix**2))
+#     return even_distribution_score + repulsion_score
+
 def fitness_function(positions):
-    dist_matrix = distance.pdist(positions)
-    dist_sum = np.sum(dist_matrix)
-    even_distribution_score = 1 / (1 + dist_sum)
-    repulsion_score = np.sum(1 / (1 + dist_matrix**2))
-    return even_distribution_score + repulsion_score
+    dist_matrix = distance.pdist(positions)    
+    variance = np.var(dist_matrix)    
+    return -variance
+
 
 # Symmetry evaluation
 def evaluate_symmetry(positions, symmetry_degree, centroid, threshold=0.01):
