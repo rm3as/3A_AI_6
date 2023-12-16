@@ -2,7 +2,7 @@ import numpy as np
 import random
 from scipy.spatial import distance
 import matplotlib.pyplot as plt
-
+#commit
 # Set parameters
 num_points = 23
 pop_size = 50
